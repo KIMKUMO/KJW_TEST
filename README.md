@@ -20,16 +20,15 @@ js/db.js            Firebase 연동 모듈 — saveScore(ms, nickname), getTop(n
 js/firebase-config.js  Firebase 프로젝트 설정값(직접 채워야 함)
 js/main.js           게임과 Firebase를 연결하는 진입점
 firestore.rules      Firestore 보안 규칙
-assets/jumpscare.jpg 점프스케어에 쓰일 이미지(직접 추가해야 함, 아래 참고)
+assets/jumpscare.png 점프스케어에 쓰일 이미지
 ```
 
-### 점프스케어 이미지 추가하기
+### 점프스케어 이미지
 
-`assets/jumpscare.jpg` 경로에 이미지 파일이 없으면 10% 확률로 점프스케어가
-발생할 때 화면이 깨진 이미지 아이콘으로 나옵니다. `index.html`의
-`#jumpscare-panel` 안 `<img>` 태그가 이 경로를 참조하므로, 원하는 이미지
-파일을 저장소에 `assets/jumpscare.jpg`라는 이름으로 추가해주세요(다른
-파일명을 쓰려면 `index.html`의 `src` 값도 함께 바꿔주세요).
+10% 확률로 점프스케어가 발생할 때 `assets/jumpscare.png`가 화면 전체에
+표시됩니다. `index.html`의 `#jumpscare-panel` 안 `<img>` 태그가 이 경로를
+참조합니다. 이미지를 교체하려면 같은 경로에 파일을 덮어쓰거나, 다른
+파일명을 쓸 경우 `index.html`의 `src` 값도 함께 바꿔주세요.
 
 ## 1. Firebase 프로젝트 준비
 
