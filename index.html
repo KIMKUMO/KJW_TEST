@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>반응속도 측정기</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="game-area" class="screen state-idle">
+    <div id="content">
+      <h1>반응속도 측정기</h1>
+
+      <div id="idle-panel" class="panel">
+        <p>버튼을 누르면 화면이 파란색으로 시작됩니다.<br />화면이 <strong>빨간색</strong>으로 바뀌는 순간 클릭하세요!</p>
+        <button id="start-btn" type="button">시작</button>
+      </div>
+
+      <div id="waiting-panel" class="panel hidden">
+        <p>곧 화면이 빨간색으로 바뀝니다...<br />지금 클릭하면 실패합니다.</p>
+      </div>
+
+      <div id="ready-panel" class="panel hidden">
+        <p>지금 클릭하세요!</p>
+      </div>
+
+      <div id="fail-panel" class="panel hidden">
+        <p>너무 빨리 클릭했습니다!</p>
+        <button id="fail-retry-btn" type="button">다시 시작</button>
+      </div>
+
+      <div id="result-panel" class="panel hidden">
+        <p id="result-ms" class="result-ms"></p>
+
+        <form id="save-form">
+          <input id="nickname-input" type="text" maxlength="20" placeholder="닉네임을 입력하세요" required />
+          <button id="save-btn" type="submit">기록 저장</button>
+        </form>
+        <p id="save-status"></p>
+
+        <section id="ranking">
+          <h2>랭킹 TOP 5</h2>
+          <ol id="ranking-list"></ol>
+        </section>
+
+        <button id="retry-btn" type="button">다시 시작</button>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
