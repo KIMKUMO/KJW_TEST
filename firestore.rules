@@ -1,0 +1,22 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 반응속도 기록 컬렉션.
+    // 누구나 읽기(랭킹 조회) 가능, 쓰기는 새 기록 생성만 허용하고 형식을 검증한다.
+    // 기존 기록의 수정/삭제는 항상 거부한다.
+    match /scores/{scoreId} {
+      allow read: if true;
+
+      allow create: if request.resource.data.keys().hasOnly(['nickname', 'ms', 'createdAt'])
+                    && request.resource.data.nickname is string
+                    && request.resource.data.nickname.size() > 0
+                    && request.resource.data.nickname.size() <= 20
+                    && request.resource.data.ms is number
+                    && request.resource.data.ms > 0
+                    && request.resource.data.ms < 20000;
+
+      allow update, delete: if false;
+    }
+  }
+}
