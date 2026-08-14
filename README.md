@@ -68,17 +68,19 @@ python3 -m http.server 8080
 
 ## 4. GitHub Pages로 배포하기
 
-빌드 산출물이 따로 없는 정적 사이트이므로 저장소 설정만으로 배포됩니다.
+이 저장소는 **GitHub Actions**를 통해 배포되도록 설정되어 있습니다
+(`.github/workflows/deploy-pages.yml`).
 
-1. GitHub 저장소 > **Settings > Pages**로 이동합니다.
-2. **Source**를 `Deploy from a branch`로 선택합니다.
-3. Branch를 이 저장소의 기본 브랜치(예: `main`)와 `/ (root)` 폴더로
-   지정하고 저장합니다.
-4. 잠시 후 `https://<사용자명>.github.io/<저장소명>/` 주소로 접속하면
-   배포된 앱을 확인할 수 있습니다.
-
-> 이 브랜치(`claude/reaction-time-web-app-vob2h4`)의 변경 사항이 기본
-> 브랜치에 병합된 뒤에 Pages 배포를 진행하세요.
+1. GitHub 저장소 > **Settings > Pages**로 이동해 **Source**가
+   `GitHub Actions`로 되어 있는지 확인합니다(이미 설정됨).
+2. `claude/reaction-time-web-app-vob2h4` 브랜치에 push할 때마다
+   `deploy-pages.yml` 워크플로가 자동으로 실행되어 정적 파일 전체를
+   Pages에 배포합니다. 저장소 상단 **Actions** 탭에서 진행 상황과
+   성공 여부를 확인할 수 있습니다.
+3. 배포가 끝나면 `https://<사용자명>.github.io/<저장소명>/` 주소로
+   접속해 앱을 확인할 수 있습니다.
+4. 필요하면 Actions 탭에서 `Deploy to GitHub Pages` 워크플로를
+   `Run workflow` 버튼으로 수동 실행할 수도 있습니다.
 
 ## 점수 저장/조회 API
 
