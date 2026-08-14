@@ -1,13 +1,13 @@
 // 반응속도 게임의 상태 머신.
 // 상태: idle(대기) -> waiting(빨간색 전환 대기) -> ready(빨간색, 측정 중)
 //       -> result(결과) / waiting 중 클릭 시 -> fail(실패)
-//       -> waiting이 끝날 때 10% 확률로 ready 대신 jumpscare(깜짝 이미지) ->
+//       -> waiting이 끝날 때 50% 확률로 ready 대신 jumpscare(깜짝 이미지) ->
 //          잠깐 보여준 뒤 자동으로 fail 처리
 // DB(Firebase) 연동과는 분리되어 있으며, 측정 결과는 'reaction-result' 커스텀 이벤트로 알려준다.
 
 const MIN_DELAY_MS = 1000;
 const MAX_DELAY_MS = 12000;
-const JUMPSCARE_PROBABILITY = 0.1;
+const JUMPSCARE_PROBABILITY = 0.5;
 const JUMPSCARE_DISPLAY_MS = 1500;
 
 const area = document.getElementById("game-area");
