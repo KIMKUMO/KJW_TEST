@@ -4,6 +4,8 @@
 빨간색으로 바뀝니다. 빨간색으로 바뀐 순간부터 클릭까지 걸린 시간(ms)을
 측정해 초록색 결과 화면에 보여주고, 닉네임을 입력하면 Firebase(Firestore)에
 기록을 저장합니다. 빨간색으로 바뀌기 전에 클릭하면 실패 처리됩니다.
+10% 확률로는 빨간 화면 대신 깜짝 이미지(점프스케어)가 잠깐 나타났다가
+자동으로 실패 처리됩니다.
 
 빌드 도구 없이 순수 HTML/CSS/JS로만 구성되어 있어 정적 파일을 그대로
 GitHub Pages에서 서비스할 수 있습니다.
@@ -12,13 +14,22 @@ GitHub Pages에서 서비스할 수 있습니다.
 
 ```
 index.html          화면 마크업
-style.css           상태별(파란/빨간/초록/회색) 화면 스타일
-js/game.js          게임 상태 머신(대기 -> 빨간화면 -> 결과/실패)
+style.css           상태별(파란/빨간/초록/회색/점프스케어) 화면 스타일
+js/game.js          게임 상태 머신(대기 -> 빨간화면 또는 점프스케어 -> 결과/실패)
 js/db.js            Firebase 연동 모듈 — saveScore(ms, nickname), getTop(n)
 js/firebase-config.js  Firebase 프로젝트 설정값(직접 채워야 함)
 js/main.js           게임과 Firebase를 연결하는 진입점
 firestore.rules      Firestore 보안 규칙
+assets/jumpscare.jpg 점프스케어에 쓰일 이미지(직접 추가해야 함, 아래 참고)
 ```
+
+### 점프스케어 이미지 추가하기
+
+`assets/jumpscare.jpg` 경로에 이미지 파일이 없으면 10% 확률로 점프스케어가
+발생할 때 화면이 깨진 이미지 아이콘으로 나옵니다. `index.html`의
+`#jumpscare-panel` 안 `<img>` 태그가 이 경로를 참조하므로, 원하는 이미지
+파일을 저장소에 `assets/jumpscare.jpg`라는 이름으로 추가해주세요(다른
+파일명을 쓰려면 `index.html`의 `src` 값도 함께 바꿔주세요).
 
 ## 1. Firebase 프로젝트 준비
 
