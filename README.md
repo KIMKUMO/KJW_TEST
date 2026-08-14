@@ -40,12 +40,12 @@ firestore.rules      Firestore 보안 규칙
      `deploy-pages.yml` 워크플로가 배포 직전에 이 값들로
      `js/firebase-config.js`를 자동 생성하므로, 실제 값이 저장소에
      커밋되지 않습니다.
-     - `FIREBASE_API_KEY`
-     - `FIREBASE_AUTH_DOMAIN`
-     - `FIREBASE_PROJECT_ID`
-     - `FIREBASE_STORAGE_BUCKET`
-     - `FIREBASE_MESSAGING_SENDER_ID`
-     - `FIREBASE_APP_ID`
+     - `VITE_FIREBASE_API_KEY`
+     - `VITE_FIREBASE_AUTH_DOMAIN`
+     - `VITE_FIREBASE_PROJECT_ID`
+     - `VITE_FIREBASE_STORAGE_BUCKET`
+     - `VITE_FIREBASE_MESSAGING_SENDER_ID`
+     - `VITE_FIREBASE_APP_ID`
 
 ## 2. Firestore 보안 규칙 배포
 
