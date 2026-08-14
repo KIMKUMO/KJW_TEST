@@ -3,6 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
+      - main
       - claude/reaction-time-web-app-vob2h4
   workflow_dispatch:
 
