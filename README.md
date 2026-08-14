@@ -29,10 +29,23 @@ firestore.rules      Firestore 보안 규칙
 2. 왼쪽 메뉴에서 **빌드 > Firestore Database**로 들어가 데이터베이스를
    생성합니다(프로덕션 모드로 시작해도 무방 — 규칙은 아래에서 별도로 배포).
 3. 프로젝트 개요 화면에서 **웹 아이콘(</>)**을 눌러 웹 앱을 등록합니다.
-4. 등록 후 나오는 `firebaseConfig` 객체 값을 복사해
-   `js/firebase-config.js`의 동일한 필드에 그대로 붙여넣습니다.
-   - 이 값들은 브라우저에 그대로 노출되는 공개 값이며 비밀키가 아닙니다.
-     실제 보안은 아래의 Firestore 보안 규칙이 담당합니다.
+4. 등록 후 나오는 `firebaseConfig` 객체 값(apiKey, authDomain, projectId,
+   storageBucket, messagingSenderId, appId)을 아래 두 가지 중 하나에
+   반영합니다.
+   - **로컬 테스트용**: `js/firebase-config.js`의 동일한 필드에 그대로
+     붙여넣습니다. 이 값들은 브라우저에 그대로 노출되는 공개 값이며
+     비밀키가 아닙니다 — 실제 보안은 Firestore 보안 규칙이 담당합니다.
+   - **배포용(GitHub Actions)**: 저장소 **Settings > Secrets and
+     variables > Actions**에서 아래 이름으로 시크릿을 등록합니다.
+     `deploy-pages.yml` 워크플로가 배포 직전에 이 값들로
+     `js/firebase-config.js`를 자동 생성하므로, 실제 값이 저장소에
+     커밋되지 않습니다.
+     - `FIREBASE_API_KEY`
+     - `FIREBASE_AUTH_DOMAIN`
+     - `FIREBASE_PROJECT_ID`
+     - `FIREBASE_STORAGE_BUCKET`
+     - `FIREBASE_MESSAGING_SENDER_ID`
+     - `FIREBASE_APP_ID`
 
 ## 2. Firestore 보안 규칙 배포
 
